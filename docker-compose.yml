@@ -1,0 +1,32 @@
+services:
+  rehearse:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: ./backend/.env
+    environment:
+      APP_ENV: production
+      TRUST_PROXY: "1"
+      PISTON_URL: http://piston:2000
+    depends_on:
+      - piston
+    volumes:
+      - rehearse-data:/data
+    restart: unless-stopped
+
+  # Code runner for C, C++ and Java. Python runs in the browser and does not need it.
+  piston:
+    image: ghcr.io/engineer-man/piston
+    privileged: true   # Piston sandboxes code with Linux isolation features
+    ports:
+      - "127.0.0.1:2000:2000"   # local only: for installing languages and for development
+    volumes:
+      - piston-packages:/piston/packages
+    tmpfs:
+      - /piston/jobs:exec,uid=1000,gid=1000,mode=711
+      - /tmp:exec
+    restart: unless-stopped
+
+volumes:
+  rehearse-data:
+  piston-packages:

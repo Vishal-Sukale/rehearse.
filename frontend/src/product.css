@@ -1,0 +1,78 @@
+/* Product polish: phones and desktops, installed-app mode, account dialog, offline banner */
+html { -webkit-text-size-adjust: 100%; }
+body { -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
+
+/* Use the visible viewport on phones, where the browser toolbar and keyboard change the height */
+@supports (height: 100dvh) {
+  .shell { height: 100dvh; }
+  .auth { min-height: 100dvh; }
+  .boot { height: 100dvh; }
+}
+
+/* Notches and home-indicator bars (installed app, landscape) */
+.sidebar { padding-top: calc(18px + env(safe-area-inset-top)); padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
+.chat-head { padding-top: calc(14px + env(safe-area-inset-top)); }
+.composer-wrap { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+.menu-btn { top: calc(10px + env(safe-area-inset-top)); }
+.page { padding-left: max(28px, env(safe-area-inset-left)); padding-right: max(28px, env(safe-area-inset-right)); }
+.composer textarea { max-height: min(240px, 30dvh); }
+
+/* Touch screens: comfortable tap targets, no hover-only controls */
+@media (pointer: coarse) {
+  .chip, .toggle, .segmented button, .ghost, .primary, .new, .nav-btn, .theme-btn { min-height: 44px; }
+  .theme-btn { min-width: 44px; }
+  .link { min-height: 44px; display: inline-flex; align-items: center; }
+  .session .open { padding: 12px 10px; }
+  .del { opacity: 1; min-width: 44px; }
+  .mic, .send { width: 44px; height: 44px; }
+}
+
+/* Phones and small tablets */
+@media (max-width: 860px) {
+  .auth-pitch { padding: 28px 20px 8px; gap: 12px; }
+  .auth-pitch h1 { font-size: 30px; max-width: none; }
+  .auth-pitch .feats, .auth-pitch .preview { display: none; }
+  .auth-card { margin: 8px auto 28px; padding: 22px; width: calc(100% - 32px); box-shadow: none; }
+
+  .chat-head { flex-wrap: wrap; gap: 6px 12px; padding-right: 14px; }
+  .head-right { justify-content: flex-start; gap: 6px; }
+  .thread { padding: 20px 16px 8px; }
+  .msg { gap: 12px; margin-bottom: 24px; }
+  .mark { width: 30px; height: 30px; font-size: 15px; }
+  .msg.you p { max-width: 92%; font-size: 16px; }
+  .qtext { font-size: 21px; }
+  .composer-wrap { padding: 6px 12px calc(12px + env(safe-area-inset-bottom)); }
+  .composer-foot span { display: none; }
+
+  .page { padding: 64px 16px 56px; }
+  .stat b { font-size: 32px; }
+  .tracks { grid-template-columns: repeat(2, 1fr); }
+  .hero .ladder { max-width: 320px; }
+  .modal { padding: 20px; }
+}
+@media (max-width: 420px) {
+  .actions .primary, .actions .ghost { flex: 1 1 100%; }
+}
+
+/* Account dialog */
+.modal-back { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, .55); display: grid; place-items: center; padding: 16px; }
+.modal {
+  width: min(460px, 100%); max-height: calc(100dvh - 32px); overflow-y: auto;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px;
+  display: grid; gap: 10px; box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+}
+.modal h2 { margin: 0; }
+.modal .sub { margin: 0 0 6px; color: var(--muted); }
+.modal h3 { margin: 14px 0 0; }
+.modal .hint { margin: 0; }
+.danger-h { color: var(--bad); }
+.ghost.danger { border-color: var(--bad); color: var(--bad); }
+.primary.danger-btn { background: var(--bad); color: #fff; }
+.sb-links { display: flex; gap: 14px; grid-column: 2; }
+.sb-foot .sb-links .link { font-size: 13px; padding: 0; }
+
+/* Offline banner and crash screen */
+.offline { position: fixed; top: 0; left: 0; right: 0; z-index: 60; background: var(--warn); color: #1b1300; text-align: center; padding: 8px 12px; font-size: 14px; }
+.crash { text-align: center; padding: 24px; }
+.crash h1 { margin: 0 0 8px; }
+.crash p { color: var(--muted); margin: 0 0 20px; }

@@ -1,0 +1,32 @@
+/* Coding round and coding history: phone layout, plus the history page */
+.coding-bar { position: sticky; top: 0; z-index: 20; background: var(--bg); padding-top: calc(12px + env(safe-area-inset-top)); }
+.hist-meta { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
+.spark { display: block; width: 100%; height: auto; }
+.hist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 28px 0; }
+
+/* Touch screens: 16px text stops iPhones from zooming in when you tap the editor, and taps get bigger */
+@media (pointer: coarse) {
+  .code { font-size: 16px; line-height: 1.5; }
+  .coding-bar a { min-height: 44px; display: inline-flex; align-items: center; }
+  .rv summary { min-height: 56px; }
+}
+
+@media (max-width: 900px) {
+  .coding-bar { flex-wrap: wrap; gap: 0 14px; padding-left: 14px; padding-right: 14px; padding-bottom: 8px; }
+  .coding-bar .engine { order: 5; flex-basis: 100%; font-size: 12px; }
+  .coding { padding: 16px 14px 24px; gap: 20px; }
+  .coding-wrap { padding: 24px 16px 60px; }
+  .code { min-height: 240px; }
+
+  /* Run and Submit stay pinned to the bottom of the screen while you scroll the code and results */
+  .editor .actions {
+    position: sticky; bottom: 0; z-index: 10; margin: 12px -14px 0;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: var(--bg); border-top: 1px solid var(--line);
+  }
+  .editor .actions button { flex: 1; }
+  .editor .segmented { width: 100%; }
+  .editor .segmented button { flex: 1; padding-left: 8px; padding-right: 8px; }
+
+  .hist-grid { grid-template-columns: 1fr; gap: 24px; }
+  .coding-wrap .stat b { font-size: 32px; }
+}

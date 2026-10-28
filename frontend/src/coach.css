@@ -1,0 +1,13 @@
+/* Coach my answer, delivery summary */
+.coach { margin-top: 18px; }
+.coach-card { border: 1px solid var(--accent); background: rgba(127, 178, 255, .07); border-radius: 14px; padding: 16px 18px; }
+.coach-card h4 { margin: 14px 0 4px; color: var(--text); font-size: 14px; font-weight: 600; }
+.coach-card h4:first-child { margin-top: 0; }
+.coach-card p, .coach-card ul { margin: 0; }
+.coach-card ul { padding-left: 20px; }
+.coach-answer { white-space: pre-wrap; color: var(--text); line-height: 1.6; }
+.rv-delivery { margin: 8px 0 0 !important; font-size: 14px; }
+.delivery { margin-top: 40px; }
+.delivery ul { margin: 0; padding-left: 20px; color: var(--muted); }
+.delivery li { margin-bottom: 6px; }
+@media print { .coach > .ghost { display: none; } }

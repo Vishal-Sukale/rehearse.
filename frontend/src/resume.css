@@ -1,0 +1,17 @@
+/* Resume upload + "From your resume" tag */
+.drop {
+  display: grid; gap: 6px; justify-items: center; text-align: center; width: 100%;
+  padding: 26px 18px; border: 1.5px dashed var(--line); border-radius: 14px; background: var(--panel);
+  cursor: pointer; font: inherit; color: inherit; transition: border-color .15s, background .15s;
+}
+.drop:hover:not(:disabled), .drop.over { border-color: var(--accent); background: rgba(127, 178, 255, .08); }
+.drop b { font-size: 17px; font-weight: 600; }
+.drop small { color: #8d90bb; max-width: 48ch; font-size: 14px; line-height: 1.5; }
+
+.resume-card {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  padding: 16px 18px; border: 1px solid var(--accent); background: rgba(127, 178, 255, .08); border-radius: 14px;
+}
+.resume-card p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+.hint { margin: 8px 0 0; color: #8d90bb; font-size: 14px; }
+.resume-tag { border-color: var(--accent); color: var(--accent); }

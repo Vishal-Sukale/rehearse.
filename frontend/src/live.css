@@ -1,0 +1,6 @@
+/* Unfinished interviews in the sidebar */
+.live-list { display: grid; gap: 2px; margin-bottom: 6px; }
+.live-list .session .open b::before {
+  content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px;
+  border-radius: 50%; background: var(--warn);
+}
